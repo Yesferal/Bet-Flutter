@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:bet_flutter/framework/http/fixture_data_source.dart';
+import 'package:bet_flutter/framework/http/http_data_source.dart';
 import '../model/fixture_model.dart';
 import '../util/y_log.dart';
 
 class GetFixtureUseCase {
-  FixtureDataSource fixtureDataSource;
+  HttpDataSource fixtureDataSource;
 
   GetFixtureUseCase(this.fixtureDataSource);
 

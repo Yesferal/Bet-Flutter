@@ -20,31 +20,31 @@ class HttpApi {
   }
 }
 
-class Build {
+class HttpBuild {
   String path = "";
   String host = "";
   Map<String, dynamic> query = {};
   Map<String, String> headers = {};
 
-  Build withHost(String host) {
+  HttpBuild withHost(String host) {
     this.host = host;
 
     return this;
   }
 
-  Build withPath(String path) {
+  HttpBuild withPath(String path) {
     this.path = path;
 
     return this;
   }
 
-  Build withQuery(Map<String, dynamic> query) {
+  HttpBuild withQuery(Map<String, dynamic> query) {
     this.query = query;
 
     return this;
   }
 
-  Build withHeaders(Map<String, String> headers) {
+  HttpBuild withHeaders(Map<String, String> headers) {
     this.headers = headers;
 
     return this;

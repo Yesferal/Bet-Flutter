@@ -4,11 +4,11 @@ import '../../domain/config/base_config.dart';
 import 'http_api.dart';
 import 'api_constant.dart';
 
-class FixtureDataSource {
+class HttpDataSource {
   List<Fixture> matchList = <Fixture>[];
   BaseConfig basicConfig;
 
-  FixtureDataSource(this.basicConfig);
+  HttpDataSource(this.basicConfig);
 
   Future getFixtureFromApi(DateTime dateTime) async {
     final query = {
@@ -16,7 +16,7 @@ class FixtureDataSource {
       'date': DateFormat("yyyy-MM-dd").format(dateTime),
     };
 
-    return Build()
+    return HttpBuild()
         .withHost(basicConfig.apiHost)
         .withPath(ApiConstant.GET_FIXTURE)
         .withQuery(query)

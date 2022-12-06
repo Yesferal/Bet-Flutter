@@ -1,5 +1,5 @@
 import 'package:bet_flutter/domain/util/y_log.dart';
-import 'package:bet_flutter/framework/http/fixture_data_source.dart';
+import 'package:bet_flutter/framework/http/http_data_source.dart';
 import 'package:bet_flutter/presentation/config/environment.dart';
 import 'package:bet_flutter/presentation/fixture_detail_state.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +17,9 @@ class _FixtureListState extends State<FixtureList> {
   List<Fixture> matchList = <Fixture>[];
 
   void initFixture() async {
+    // TODO: Move this part to DI class
+    HttpDataSource fixtureDataSource = HttpDataSource(Environment().config);
     YLog.d("GetFixtureUseCase with FixtureDataSource!");
-    FixtureDataSource fixtureDataSource = FixtureDataSource(Environment().config);
     var response = await GetFixtureUseCase(fixtureDataSource).execute(DateTime.now());
     setState(() {
       YLog.d("Updating data: ${response}");

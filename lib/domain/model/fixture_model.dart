@@ -5,9 +5,9 @@ class Fixture {
   League? league;
   Teams? teams;
   double? probability;
-  String id;
+  String? id;
 
-  Fixture({required this.id, this.probability, this.teams, this.league});
+  Fixture({this.id, this.probability, this.teams, this.league});
 
   Fixture.fromJson(Map json)
       : probability = double.parse(json['probability'].toString()),
