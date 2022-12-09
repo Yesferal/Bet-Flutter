@@ -2,6 +2,7 @@ import 'package:bet_flutter/domain/util/y_log.dart';
 import 'package:bet_flutter/framework/http/http_data_source.dart';
 import 'package:bet_flutter/presentation/config/environment.dart';
 import 'package:bet_flutter/presentation/fixture_detail_state.dart';
+import 'package:bet_flutter/presentation/theme/bet_theme.dart';
 import 'package:flutter/material.dart';
 import '../domain/model/fixture_model.dart';
 import '../domain/usecase/get_fixture_usecase.dart';
@@ -39,28 +40,29 @@ class _FixtureListState extends State<FixtureList> {
     YLog.d("Widget Build!");
     return Scaffold(
         appBar: AppBar(
-          title: Text(Environment().config.appName),
+          title: Text(Environment().config.appName,
+              style: BetTheme().theme.textTheme.headline6),
         ),
         body: Container(
           child: ListView.builder(
               itemCount: matchList.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return FixtureDetail(fixture: matchList[index]);
-                        },
-                      ),
-                    );
-                  },
-                  child: ListTile(
-                    title: Text(matchList[index].getFixtureTitle()),
-                    subtitle: Text(matchList[index].probability.toString()),
-                  )
-                );
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return FixtureDetail(fixture: matchList[index]);
+                          },
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                      title: Text(matchList[index].getFixtureTitle(),
+                          style: BetTheme().theme.textTheme.headline4),
+                      subtitle: Text(matchList[index].probability.toString()),
+                    ));
               }),
         ));
   }

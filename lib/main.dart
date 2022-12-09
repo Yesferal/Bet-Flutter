@@ -1,5 +1,6 @@
 import 'package:bet_flutter/presentation/config/environment.dart';
 import 'package:bet_flutter/presentation/fixture_state.dart';
+import 'package:bet_flutter/presentation/theme/bet_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,6 +9,7 @@ void main() {
     defaultValue: Environment.DEV,
   );
   Environment().initConfig(environment);
+  BetTheme().initConfig(BetTheme.LIGHT);
 
   runApp(const BetApp());
 }
@@ -18,15 +20,10 @@ class BetApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData();
+    final ThemeData theme = BetTheme().theme;
     return MaterialApp(
       title: 'JustBet',
-      theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.grey,
-          secondary: Colors.black,
-        ),
-      ),
+      theme: theme,
       home: FixtureList(),
     );
   }
