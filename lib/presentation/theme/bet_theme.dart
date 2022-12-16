@@ -1,3 +1,5 @@
+import 'package:bet_flutter/presentation/theme/bet_theme_color.dart';
+import 'package:bet_flutter/presentation/theme/bet_theme_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,117 +19,73 @@ class BetTheme {
   late ThemeData theme;
 
   initConfig(String type) {
-    theme = _getType(type);
+    BetColorTheme colorTheme = _getColorType(type);
+    TextTheme textTheme = _getTextTheme(colorTheme);
+    theme = _getThemeData(colorTheme, textTheme);
   }
 
-  ThemeData _getType(String type) {
+  BetColorTheme _getColorType(String type) {
     switch (type) {
       case BetTheme.DARK:
-        return _dark();
+        return BetColorDarkTheme();
       default:
-        return _light();
+        return BetColorLightTheme();
     }
   }
 
-  final TextTheme _lightTextTheme = TextTheme(
-    bodyText1: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.black,
-    ),
-    headline1: GoogleFonts.openSans(
-      fontSize: 32.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    ),
-    headline2: GoogleFonts.openSans(
-      fontSize: 21.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.black,
-    ),
-    headline3: GoogleFonts.openSans(
-      fontSize: 16.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-    headline6: GoogleFonts.openSans(
-      fontSize: 20.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-  );
-
-  final TextTheme _darkTextTheme = TextTheme(
-    bodyText1: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    headline1: GoogleFonts.openSans(
-      fontSize: 32.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    headline2: GoogleFonts.openSans(
-      fontSize: 21.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    headline3: GoogleFonts.openSans(
-      fontSize: 16.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-    headline6: GoogleFonts.openSans(
-      fontSize: 20.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-  );
-
-  ThemeData _light() {
-    return ThemeData(
-      brightness: Brightness.light,
-      checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateColor.resolveWith(
-              (states) {
-            return Colors.black;
-          },
+  TextTheme _getTextTheme(BetColorTheme betColorTheme) {
+    return TextTheme(
+        bodyText1: GoogleFonts.openSans(
+          fontSize: BetThemeConstant.BODY_FONT_SIZE,
+          fontWeight: FontWeight.w400,
+          color: betColorTheme.bodyText,
         ),
-      ),
-      appBarTheme: const AppBarTheme(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-      ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
-      ),
-      bottomNavigationBarTheme: const
-      BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
-      ),
-      textTheme: _lightTextTheme,
+        subtitle1: GoogleFonts.openSans(
+          fontSize: BetThemeConstant.BODY_FONT_SIZE,
+          fontWeight: FontWeight.w400,
+          color: betColorTheme.subtitleText,
+        ),
+        headline3: GoogleFonts.openSans(
+          fontSize: BetThemeConstant.TITLE_FONT_SIZE,
+          fontWeight: FontWeight.w600,
+          color: betColorTheme.bodyText,
+        ),
+        headline6: GoogleFonts.openSans(
+            fontSize: BetThemeConstant.APP_BAR_FONT_SIZE,
+            fontWeight: FontWeight.w600,
+            color: betColorTheme.appBarText
+        )
     );
   }
 
-  ThemeData _dark() {
+  ThemeData _getThemeData(BetColorTheme betColorTheme, TextTheme textTheme) {
     return ThemeData(
-      brightness: Brightness.dark,
+      brightness: betColorTheme.brightness,
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStateColor.resolveWith(
+              (states) {
+            return betColorTheme.activeBackgroundButton;
+          },
+        ),
+      ),
       appBarTheme: AppBarTheme(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[900],
+        foregroundColor: betColorTheme.foregroundButton,
+        backgroundColor: betColorTheme.activeBackgroundButton,
+        titleTextStyle: textTheme.headline6
       ),
-      floatingActionButtonTheme: const
-      FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        foregroundColor: betColorTheme.foregroundButton,
+        backgroundColor: betColorTheme.activeBackgroundButton,
       ),
-      bottomNavigationBarTheme: const
-      BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedItemColor: betColorTheme.activeBackgroundButton,
       ),
-      textTheme: _darkTextTheme,
+      textTheme: textTheme,
+      sliderTheme: SliderThemeData(
+        disabledActiveTrackColor: betColorTheme.activeBackgroundButton,
+        disabledInactiveTrackColor: betColorTheme.inactiveBackgroundButton,
+        disabledThumbColor: betColorTheme.activeBackgroundButton
+      )
     );
   }
 }

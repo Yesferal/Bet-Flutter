@@ -13,4 +13,8 @@ class League {
   Map toJson() {
     return {'name': name, 'logo': logo, 'country': country, 'season': season };
   }
+
+  String getLeagueTitle() {
+    return "${country ?? ''} - ${name ?? ''}";
+  }
 }
