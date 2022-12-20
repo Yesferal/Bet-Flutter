@@ -1,12 +1,12 @@
 import 'package:bet_flutter/domain/util/y_log.dart';
 import 'package:bet_flutter/framework/http/http_data_source.dart';
 import 'package:bet_flutter/presentation/config/environment.dart';
-import 'package:bet_flutter/presentation/fixture_detail_state.dart';
+import 'package:bet_flutter/presentation/navigation/navigation_constant.dart';
 import 'package:bet_flutter/presentation/theme/bet_theme.dart';
 import 'package:bet_flutter/presentation/theme/bet_theme_constant.dart';
 import 'package:flutter/material.dart';
-import '../domain/model/fixture_model.dart';
-import '../domain/usecase/get_fixture_usecase.dart';
+import '../../domain/model/fixture_model.dart';
+import '../../domain/usecase/get_fixture_usecase.dart';
 
 class FixtureList extends StatefulWidget {
   FixtureList({super.key});
@@ -48,13 +48,10 @@ class _FixtureListState extends State<FixtureList> {
             itemBuilder: (context, index) {
               return GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return FixtureDetail(fixture: matchList[index]);
-                        },
-                      ),
+                      BetNavigationConstant.FIXTURE_DETAIL,
+                      arguments: matchList[index]
                     );
                   },
                   child: Card(

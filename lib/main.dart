@@ -1,5 +1,7 @@
 import 'package:bet_flutter/presentation/config/environment.dart';
-import 'package:bet_flutter/presentation/fixture_state.dart';
+import 'package:bet_flutter/presentation/navigation/navigation_constant.dart';
+import 'package:bet_flutter/presentation/screen/fixture_detail_state.dart';
+import 'package:bet_flutter/presentation/screen/fixture_state.dart';
 import 'package:bet_flutter/presentation/theme/bet_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +26,10 @@ class BetApp extends StatelessWidget {
     return MaterialApp(
       title: 'JustBet',
       theme: theme,
-      home: FixtureList(),
+      routes: {
+        BetNavigationConstant.HOME: (context) => FixtureList(),
+        BetNavigationConstant.FIXTURE_DETAIL: (context) => const FixtureDetail()
+      },
     );
   }
 }
