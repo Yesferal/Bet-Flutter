@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yesferal.bet_flutter">
    <application
-        android:label="bet_flutter"
+        android:label="JustBet"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
