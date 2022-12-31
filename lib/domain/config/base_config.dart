@@ -1,5 +1,10 @@
 abstract class BaseConfig {
+
   String get appName;
-  String get apiHost;
+
+  int get apiHostSelected => 0;
+
+  List<String> get apiHosts;
+
   Map<String, String> get headers;
 }

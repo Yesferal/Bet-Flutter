@@ -17,7 +17,7 @@ class HttpDataSource {
     };
 
     return HttpBuild()
-        .withHost(basicConfig.apiHost)
+        .withHost(basicConfig.apiHosts[basicConfig.apiHostSelected])
         .withPath(ApiConstant.GET_FIXTURE)
         .withQuery(query)
         .withHeaders(basicConfig.headers)

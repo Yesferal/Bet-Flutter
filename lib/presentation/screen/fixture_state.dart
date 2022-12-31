@@ -5,12 +5,13 @@ import 'package:bet_flutter/presentation/widget/fixture_card.dart';
 import 'package:flutter/material.dart';
 import '../../domain/model/fixture_model.dart';
 import '../../domain/usecase/get_fixture_usecase.dart';
+import '../navigation/navigation_constant.dart';
 
 class FixtureList extends StatefulWidget {
   const FixtureList({super.key});
 
   @override
-  _FixtureListState createState() => _FixtureListState();
+  State<FixtureList> createState() => _FixtureListState();
 }
 
 class _FixtureListState extends State<FixtureList> {
@@ -39,8 +40,12 @@ class _FixtureListState extends State<FixtureList> {
     YLog.d("Widget Build!");
     return Scaffold(
         appBar: AppBar(
-          title: Text(Environment().config.appName),
-        ),
+            flexibleSpace: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, BetNavigationConstant.SETTINGS);
+              },
+            ),
+            title: Text(Environment().config.appName)),
         body: ListView.builder(
             itemCount: matchList.length,
             itemBuilder: (context, index) {

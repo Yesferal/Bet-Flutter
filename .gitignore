@@ -58,4 +58,4 @@ pubspec.lock
 *.js.map
 
 # API
-lib/presentation/config/prod_config.dart
+lib/main_prod.dart
