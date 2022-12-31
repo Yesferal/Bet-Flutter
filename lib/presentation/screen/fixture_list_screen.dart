@@ -23,7 +23,7 @@ class _FixtureListState extends State<FixtureList> {
     YLog.d("GetFixtureUseCase with FixtureDataSource!");
     var response = await GetFixtureUseCase(fixtureDataSource).execute(DateTime.now());
     setState(() {
-      YLog.d("Updating data: ${response}");
+      YLog.d("Updating data: $response");
       matchList = response;
     });
   }
@@ -42,7 +42,7 @@ class _FixtureListState extends State<FixtureList> {
         appBar: AppBar(
             flexibleSpace: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, BetNavigationConstant.SETTINGS);
+                Navigator.pushNamed(context, BetNavigationConstant.SETTINGS_SCREEN);
               },
             ),
             title: Text(Environment().config.appName)),

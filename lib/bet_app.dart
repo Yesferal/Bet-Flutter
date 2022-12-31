@@ -1,6 +1,6 @@
 import 'package:bet_flutter/presentation/navigation/navigation_constant.dart';
-import 'package:bet_flutter/presentation/screen/fixture_detail_state.dart';
-import 'package:bet_flutter/presentation/screen/fixture_state.dart';
+import 'package:bet_flutter/presentation/screen/fixture_detail_screen.dart';
+import 'package:bet_flutter/presentation/screen/fixture_list_screen.dart';
 import 'package:bet_flutter/presentation/screen/settings_screen.dart';
 import 'package:bet_flutter/presentation/theme/bet_theme.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +16,9 @@ class BetApp extends StatelessWidget {
       title: 'JustBet',
       theme: theme,
       routes: {
-        BetNavigationConstant.HOME: (context) => const FixtureList(),
-        BetNavigationConstant.FIXTURE_DETAIL: (context) => const FixtureDetail(),
-        BetNavigationConstant.SETTINGS: (context) => const SettingsScreen()
+        BetNavigationConstant.HOME_SCREEN: (context) => const FixtureList(),
+        BetNavigationConstant.FIXTURE_DETAIL_SCREEN: (context) => const FixtureDetail(),
+        BetNavigationConstant.SETTINGS_SCREEN: (context) => const SettingsScreen()
       },
     );
   }

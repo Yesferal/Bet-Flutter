@@ -14,7 +14,7 @@ class FixtureCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, BetNavigationConstant.FIXTURE_DETAIL,
+          Navigator.pushNamed(context, BetNavigationConstant.FIXTURE_DETAIL_SCREEN,
               arguments: fixture);
         },
         child: Card(
